@@ -9,18 +9,29 @@ import {getSongs,deleteSong} from "../Actions/SongActions"
     render() {
         const songs=this.props.songs.map(song=>
             (
-                <div key={song.id}>
-                    
-                    {song.name}
+                <tr key={song.id}>
+                    <td>{song.id}</td>
+                 <td> {song.name} </td>   
 
-                    <button onClick={()=>this.props.deleteSong(song.id)}>Delete</button>
-                </div>
+                   <td> <button className="btn btn-danger" onClick={()=>this.props.deleteSong(song.id)}>Delete</button> </td>
+                </tr>
             )
         )
                 return (
             <div>
-                <h1>Songs</h1>
-                {songs}
+              <table className="table table-condensed">
+    <thead>
+      <tr>
+        <th>Song id</th>
+        <th>Song name</th>
+        <th>Operations</th>
+      </tr>
+    </thead>
+    <tbody>
+     {songs}
+
+    </tbody>
+  </table>
             </div>
         )
     }

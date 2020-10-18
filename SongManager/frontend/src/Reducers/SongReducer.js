@@ -1,4 +1,4 @@
-import { Delete_Song, Fetch_Songs } from "../Actions/types"
+import { Add_Song, Delete_Song, Fetch_Songs } from "../Actions/types"
 import store from "../store"
 
 
@@ -16,6 +16,11 @@ export default  function(state=initState ,action){
             return {
                 ...state,
                 items:state.items.filter(item=>item.id!==action.payload)
+            }
+        case Add_Song:
+            return {
+                ...state,
+                items:[...state.items,action.payload]
             }
         default :
         return state

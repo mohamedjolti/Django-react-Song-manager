@@ -1,4 +1,4 @@
-import { Delete_Song, Fetch_Songs } from "./types";
+import { Add_Song, Delete_Song, Fetch_Songs } from "./types";
 
 
 
@@ -24,5 +24,23 @@ export const deleteSong=(id)=>(dispatch)=>{
         dispatch({type:Delete_Song,payload:id})
     })
     
+
+}
+
+//add song
+
+export const AddSong=(name)=>(dispatch)=>{
+    console.log("add song"+name);
+    const formData = new FormData();
+    formData.append("name",name)
+   fetch("/api/songs/", {
+       method: 'Post',
+
+       body:formData
+   
+   }).then(res =>res.json()).then(data=>{
+       dispatch({type:Add_Song,payload:data})
+   })
+   
 
 }
