@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development ./SongManager/frontend/src/index.js  --output ./SongManager/frontend/static/frontend/main.js",
+    "dev": "webpack --mode development --watch ./SongManager/frontend/src/index.js  --output ./SongManager/frontend/static/frontend/main.js",
     "build": "webpack --mode production ./SongManager/frontend/src/index.js  --output ./SongManager/frontend/static/frontend/main.js"
   },
   "author": "",
@@ -25,6 +25,9 @@
   "dependencies": {
     "axios": "^0.20.0",
     "prop-types": "^15.7.2",
-    "react-router-dom": "^5.2.0"
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   }
 }
