@@ -35,4 +35,14 @@ class LoginApi(generics.GenericAPIView):
         })  
 #get user 
 
+class UserAPi(generics.RetrieveAPIView):
+    permission_classes=[
+        permissions.IsAuthenticated
+    ]
+    serializer_class=Userserializer
+    
+    def get_object(self):
+        return self.request.user
+    
+
 
