@@ -21,4 +21,5 @@ urlpatterns = [
     path("",include("frontend.urls")),
 
     path("",include("song.urls")),
+    path("",include("acounts.urls"))
 ]

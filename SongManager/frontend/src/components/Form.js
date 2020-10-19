@@ -26,16 +26,19 @@ import {AddSong} from "../Actions/SongActions"
        e.preventDefault();
        console.log(this.state.name);
        this.props.AddSong(this.state.name);
-       this.state.name=""
+       this.setState({
+           name:""
+       })
    }
 
     render() {
         return (
             <div>
+                <h3>Add new Song</h3>
               <form onSubmit={this.onsubmit}>
                 
-               <input name="name" value={this.state.name} onChange={this.onchange}/>
-               <button type="submit">add new song</button>
+               <input className="form-control" placeholder="new Song" name="name" value={this.state.name} onChange={this.onchange}/>
+               <button className="btn btn-primary" type="submit">add new song</button>
               </form>
             </div>
         )

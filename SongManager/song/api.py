@@ -4,8 +4,16 @@ from .serializers import Songserialize
 
 
 class Songviewset(viewsets.ModelViewSet):
-    queryset=Song.objects.all()
+    
     permission_classes=[
-        permissions.AllowAny
+        permissions.IsAuthenticated
     ]
     serializer_class=Songserialize
+
+    def get_queryset(self):
+        return self.request.user.Songs.all()
+    
+    def perform_create(self,serializer):
+        serializer.save(owner=self.request.user)
+
+

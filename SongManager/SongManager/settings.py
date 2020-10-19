@@ -40,9 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "song",
     'rest_framework',
-    "frontend"
+    "frontend",
+    "knox",
+    "acounts"
 ]
 
+REST_FRAMEWORK={
+    "DEFAULT_AUTHENTIFICATION_CLASSES":('knox.auth.TokenAuthentification',)
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
