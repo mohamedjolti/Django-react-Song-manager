@@ -4,7 +4,7 @@ import {getSongs,deleteSong} from "../Actions/SongActions"
  class Songs extends Component {
 
     componentWillMount(){
-        this.props.getSongs();
+     //   this.props.getSongs();
     }
     render() {
         const songs=this.props.songs.map(song=>
