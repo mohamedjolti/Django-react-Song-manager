@@ -1,7 +1,12 @@
-import { Login_User } from "./types";
+import { Redirect } from "react-router-dom";
+import { Get_User, Login_User, Logout_User } from "./types";
+const Header={
+    'Authorization': 'Token '+localStorage.getItem("token"), 
 
+  
+}
 export const login=(form)=>(dispatch)=>{
-    console.log("add song"+name);
+
     const formData = new FormData();
     formData.append("username",form.username)
     formData.append("password",form.password)
@@ -21,9 +26,27 @@ export function register(){
        
 }
 
-export function getUser(){
+export const getUser=()=>(dispatch)=>{
+    console.log("get User action");
+    fetch("/api/auth/user", {
+       
+ 
+        headers:new Headers(Header)
+    
+    }).then(res =>res.json()).then(data=>{
+       
+        dispatch({type:Get_User,payload:data})
+    })
+ }
 
-}
-export function logout(){
-
-}
+export const logout=()=>(dispatch)=>{
+    fetch("/api/auth/logout", {
+       
+         method:"POST",
+        headers:new Headers(Header)
+    
+    }).then(res =>{
+       
+        dispatch({type:Logout_User,payload:null})
+    })
+ }

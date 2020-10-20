@@ -8,6 +8,7 @@ import {HashRouter as Router,Redirect,Switch,Route} from "react-router-dom"
 import Register from './Acounts/Register'
 import Login from './Acounts/Login'
 import PrivateRoute from './Common/PrivateRoute'
+import Logout from './Acounts/Logout'
 export default class App extends Component {
     render() {
         return (
@@ -20,6 +21,7 @@ export default class App extends Component {
                       <PrivateRoute exact path="/" component={Dashboard}/>
                       <Route exact path="/register" component={Register}/>
                       <Route exact path="/login" component={Login}/>
+                      <Route exact path="/logout" component={Logout}/>
 
 
                       </Switch>

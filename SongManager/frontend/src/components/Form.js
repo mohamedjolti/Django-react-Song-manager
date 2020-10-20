@@ -7,7 +7,8 @@ import {AddSong} from "../Actions/SongActions"
         super(props)
 
         this.state={
-            name:""
+            name:"",
+            categorie:"",
        }  
 
         this.onchange=this.onchange.bind(this)
@@ -25,9 +26,16 @@ import {AddSong} from "../Actions/SongActions"
    onsubmit(e){
        e.preventDefault();
        console.log(this.state.name);
-       this.props.AddSong(this.state.name);
+       const obj={
+        name:this.state.name,
+        categorie:this.state.categorie,
+        owner:this.props.id
+    }
+    console.log(obj);
+       this.props.AddSong(obj);
        this.setState({
-           name:""
+           name:"",
+           categorie:""
        })
    }
 
@@ -38,11 +46,15 @@ import {AddSong} from "../Actions/SongActions"
               <form onSubmit={this.onsubmit}>
                 
                <input className="form-control" placeholder="new Song" name="name" value={this.state.name} onChange={this.onchange}/>
+               <input className="form-control" placeholder="categorie" name="categorie" value={this.state.categorie} onChange={this.onchange}/>
+
                <button className="btn btn-primary" type="submit">add new song</button>
               </form>
             </div>
         )
     }
 }
-
-export default connect(null,{AddSong},)(Form)
+const mapspropstosate=(state)=>({
+    id:state.auth.user.id
+})
+export default connect(mapspropstosate,{AddSong},)(Form)

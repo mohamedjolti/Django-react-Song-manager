@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {Link} from "react-router-dom"
+import {Link, Redirect} from "react-router-dom"
 import { login } from '../../Actions/UserActions'
 
  class Login extends Component {
@@ -27,7 +27,11 @@ import { login } from '../../Actions/UserActions'
 
     }
     render() {
+        if(this.props.isAuth==true){
+         return    <Redirect to="/"/>;
+        }
         const {username,password}=this.state
+        
         return (
             <div>
                 <h2>Login</h2>
@@ -49,5 +53,7 @@ import { login } from '../../Actions/UserActions'
         )
     }
 }
-
-export default connect(null,{login},)(Login)
+const mapPropstostate=(state)=>({
+    auth:state.auth.isAuth
+})
+export default connect(mapPropstostate,{login},)(Login)
